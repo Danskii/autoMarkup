@@ -1,0 +1,19 @@
+{
+  "name": "auto-markup",
+  "version": "1.0.0",
+  "description": "\"# auto-markup\"",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danskii/auto-markup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danskii/auto-markup/issues"
+  },
+  "homepage": "https://github.com/Danskii/auto-markup#readme"
+}
