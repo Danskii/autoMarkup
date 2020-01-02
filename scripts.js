@@ -1,4 +1,5 @@
 const submitButton = document.querySelector("#submitButton");
+const resetButton = document.querySelector("#resetButton");
 const textToConvert = document.querySelector("#textToConvert");
 let formattedWithHtml = "";
 let outputHTML = document.querySelector("#output");
@@ -12,6 +13,9 @@ const formatWithHTMLfunction = () => {
       /([-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))/gm,
       "<a href='http://$1'>$1</a>"
     )
+    //words to cite
+    .replace("Globe and Mail", "<cite>Globe and Mail</cite>")
+    .replace("The Financial Post", "<cite>The Financial Post</cite>")
     //custom list of words to format
     .replace(
       "Professionally Speaking",
@@ -21,6 +25,8 @@ const formatWithHTMLfunction = () => {
       "Pour parler profession",
       "<a href='http://pourparlerprofession.oeeo.ca'><cite>Pour parler profession</cite></a>"
     )
+    //french replacements
+    .replace(/Mme/g, "M<sup>me</sup>");
 
   return formattedWithHtml;
 };
@@ -28,4 +34,12 @@ const formatWithHTMLfunction = () => {
 submitButton.addEventListener("click", () => {
   formatWithHTMLfunction();
   outputHTML.innerHTML = formattedWithHtml;
+  console.log(formattedWithHtml);
+});
+
+resetButton.addEventListener("click", () => {
+  formatWithHTMLfunction();
+  outputHTML.innerHTML = "";
+  textToConvert.value = "";
+  console.clear();
 });
