@@ -29,7 +29,7 @@ const formatWithHTMLfunction = () => {
     //mme
     .replace(/Mme /gi, "M<sup>me</sup>&nbsp")
     //dre
-    .replace(/Dre /gi, "D<sup>re</sup>&nbsp")
+    .replace(/Dre /g, "D<sup>re</sup>&nbsp")
     //superscript numbers
     .replace(/(\d)(e)/g, "$1&nbsp<sup>e</sup>");
 
