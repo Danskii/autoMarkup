@@ -14,19 +14,24 @@ const formatWithHTMLfunction = () => {
       "<a href='http://$1'>$1</a>"
     )
     //words to cite
-    .replace("Globe and Mail", "<cite>Globe and Mail</cite>")
-    .replace("The Financial Post", "<cite>The Financial Post</cite>")
+    .replace(/Globe and Mail/g, "<cite>Globe and Mail</cite>")
+    .replace(/The Financial Post/g, "<cite>The Financial Post</cite>")
     //custom list of words to format
     .replace(
-      "Professionally Speaking",
+      /Professionally Speaking/g,
       "<a href='http://professionallyspeaking.oct.ca'><cite>Professionally Speaking</cite></a>"
     )
     .replace(
-      "Pour parler profession",
+      /Pour parler profession/g,
       "<a href='http://pourparlerprofession.oeeo.ca'><cite>Pour parler profession</cite></a>"
     )
     //french replacements
-    .replace(/Mme/g, "M<sup>me</sup>");
+    //mme
+    .replace(/Mme /gi, "M<sup>me</sup>&nbsp")
+    //dre
+    .replace(/Dre /gi, "D<sup>re</sup>&nbsp")
+    //superscript numbers
+    .replace(/(\d)(e)/g, "$1&nbsp<sup>e</sup>");
 
   return formattedWithHtml;
 };
