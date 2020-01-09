@@ -27,7 +27,7 @@ const formatWithHTMLfunction = () => {
     )
     //french replacements
     //mme
-    .replace(/Mme /gi, "M<sup>me</sup>&nbsp")
+    .replace(/ Mme /gi, " M<sup>me</sup>&nbsp")
     //dre
     .replace(/Dre /g, "D<sup>re</sup>&nbsp")
     //superscript numbers
