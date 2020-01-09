@@ -31,8 +31,11 @@ const formatWithHTMLfunction = () => {
     //dre
     .replace(/Dre /g, "D<sup>re</sup>&nbsp")
     //superscript numbers
-    .replace(/(\d)(e)/g, "$1&nbsp<sup>e</sup>");
-
+    .replace(/(\d)(e)/g, "$1&nbsp<sup>e</sup>")
+    //oeuvres
+    .replace(/oeuvre/g, "œuvre")
+    //soeur
+    .replace(/soeur/g, "sœur")
   return formattedWithHtml;
 };
 
