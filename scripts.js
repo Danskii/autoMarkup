@@ -17,10 +17,10 @@ let outputHTML = document.querySelector("#output");
      .replace(/(^[A-Z].*\.$)/gm, "<p>$1</p>")
     
     //encode urls
-     .replace(
-       /([-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*))/gm,
-       "<a href='http:$1'>$1</a>"
-     )
+    //  .replace(
+    //    /([-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*))/gm,
+    //    "<a href='http:$1'>$1</a>"
+    //  )
     
      //words to cite
      .replace(/Globe and Mail/g, "<cite>Globe and Mail</cite>")
