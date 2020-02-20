@@ -16,11 +16,14 @@ const formatWithHTMLfunction = () => {
     //remove empty NBSP
     .replace(/<p>&nbsp;<\/p>/g, "")
 
-    //wrap paragraphs in p tags
-    .replace(/(^[A-Z].*\.$)/gm, "<p>$1</p>")
+   //wrap paragraphs in p tags
+    // .replace(/(^[A-Z].*\.$)/gm, "<p>$1</p>")
 
     //replace MS word paragraphs with lists
-    .replace(/<p>\u00B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/g, "<li>")
+    .replace(
+      /<p>\u00B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/g,
+      "<li>"
+    )
 
     //encode urls
     //  .replace(
