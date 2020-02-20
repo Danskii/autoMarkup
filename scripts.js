@@ -26,7 +26,7 @@ const formatWithHTMLfunction = () => {
 
     //remove <strong>&nbsp;</strong>
     .replace(/<strong>&nbsp;<\/strong>/g, "")
-    
+
 
     //wrap paragraphs in p tags
     // .replace(/(^[A-Z].*\.$)/gm, "<p>$1</p>")
