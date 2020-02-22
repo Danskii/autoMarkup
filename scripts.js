@@ -7,20 +7,29 @@ let outputHTML = document.querySelector("#output");
 const formatWithHTMLfunction = () => {
   formattedWithHtml = textToConvert.innerHTML
 
+    //replace MS word paragraphs with lists
+    .replace(
+      /<p>\u00B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/g,
+      "<li>"
+    )
     //replace double space
     .replace(/  /g, " ")
 
     //replace double space after period
     .replace(/\.  /g, ".")
 
-    //remove empty NBSP
+    //remove <p>&nbsp;</p>
     .replace(/<p>&nbsp;<\/p>/g, "")
 
-    //wrap paragraphs in p tags
-    .replace(/(^[A-Z].*\.$)/gm, "<p>$1</p>")
+    //remove <p><br></p>
+    .replace(/<p><br><\/p>/g, "")
 
-    //replace MS word paragraphs with lists
-    .replace(/<p>\u00B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/g, "<li>")
+    //remove <strong>&nbsp;</strong>
+    .replace(/<strong>&nbsp;<\/strong>/g, "")
+
+
+    //wrap paragraphs in p tags
+    // .replace(/(^[A-Z].*\.$)/gm, "<p>$1</p>")
 
     //encode urls
     //  .replace(
