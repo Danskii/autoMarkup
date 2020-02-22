@@ -69,6 +69,19 @@ const formatWithHTMLfunction = () => {
 submitButton.addEventListener("click", () => {
   formatWithHTMLfunction();
   outputHTML.innerHTML = formattedWithHtml;
+  var lis = document.querySelectorAll('li')
+  var groups = Array.from(lis).reduce((groups, li, index, arr) => {
+    if (index === 0 || li.previousElementSibling !== arr[index-1]) {
+      groups.push([])
+    }
+    groups[groups.length-1].push(li)
+    return groups
+  }, [])
+  groups.forEach(lis => {
+    var ul = document.createElement('ul')
+    output.insertBefore(ul, lis[0])
+    lis.forEach(li => ul.appendChild(li))
+  })
   console.log(formattedWithHtml);
 });
 
