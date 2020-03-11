@@ -40,6 +40,8 @@ const formatWithHTMLfunction = () => {
     //words to cite
     .replace(/Globe and Mail/g, "<cite>Globe and Mail</cite>")
     .replace(/The Financial Post/g, "<cite>The Financial Post</cite>")
+    .replace(/Ontario College of Teachers Act/g, "<cite>Ontario College of Teachers Act</cite>")
+    .replace(/Loi sur l’Ordre des enseignantes et des enseignants de l’Ontario/g, "<cite>Loi sur l’Ordre des enseignantes et des enseignants de l’Ontario</cite>")
 
     //custom list of words to format
     .replace(
