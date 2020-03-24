@@ -3,8 +3,9 @@ const resetButton = document.querySelector("#resetButton");
 const textToConvert = document.querySelector("#editor > div.ql-editor");
 let formattedWithHtml = "";
 let outputHTML = document.querySelector("#output");
+var language;
 
-const formatWithHTMLfunction = () => {
+const formatWithHTMLfunctionEN = () => {
   formattedWithHtml = textToConvert.innerHTML
 
     //replace MS word paragraphs with lists
@@ -27,21 +28,55 @@ const formatWithHTMLfunction = () => {
     //remove <strong>&nbsp;</strong>
     .replace(/<strong>&nbsp;<\/strong>/g, "")
 
-
-    //wrap paragraphs in p tags
-    // .replace(/(^[A-Z].*\.$)/gm, "<p>$1</p>")
-
-    //encode urls
-    //  .replace(
-    //    /([-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*))/gm,
-    //    "<a href='http:$1'>$1</a>"
-    //  )
-
     //words to cite
     .replace(/Globe and Mail/g, "<cite>Globe and Mail</cite>")
     .replace(/The Financial Post/g, "<cite>The Financial Post</cite>")
-    .replace(/Ontario College of Teachers Act/g, "<cite>Ontario College of Teachers Act</cite>")
-    .replace(/Loi sur l’Ordre des enseignantes et des enseignants de l’Ontario/g, "<cite>Loi sur l’Ordre des enseignantes et des enseignants de l’Ontario</cite>")
+    .replace(
+      /Ontario College of Teachers Act/g,
+      "<cite>Ontario College of Teachers Act</cite>"
+    )
+
+    //custom list of words to format
+    .replace(
+      /Professionally Speaking/g,
+      "<a href='http:professionallyspeaking.oct.ca'><cite>Professionally Speaking</cite></a>"
+    )
+    .replace(
+      /Pour parler profession/g,
+      "<a href='http:pourparlerprofession.oeeo.ca'><cite>Pour parler profession</cite></a>"
+    );
+
+  return formattedWithHtml;
+};
+
+const formatWithHTMLfunctionFR = () => {
+  formattedWithHtml = textToConvert.innerHTML
+
+    //replace MS word paragraphs with lists
+    .replace(
+      /<p>\u00B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/g,
+      "<li>"
+    )
+    //replace double space
+    .replace(/  /g, " ")
+
+    //replace double space after period
+    .replace(/\.  /g, ".")
+
+    //remove <p>&nbsp;</p>
+    .replace(/<p>&nbsp;<\/p>/g, "")
+
+    //remove <p><br></p>
+    .replace(/<p><br><\/p>/g, "")
+
+    //remove <strong>&nbsp;</strong>
+    .replace(/<strong>&nbsp;<\/strong>/g, "")
+
+    //words to cite
+    .replace(
+      /Loi sur l’Ordre des enseignantes et des enseignants de l’Ontario/g,
+      "<cite>Loi sur l’Ordre des enseignantes et des enseignants de l’Ontario</cite>"
+    )
 
     //custom list of words to format
     .replace(
@@ -63,32 +98,27 @@ const formatWithHTMLfunction = () => {
     //oeuvres
     .replace(/oeuvre/g, "œuvre")
     //soeur
-    .replace(/soeur/g, "sœur");
+    .replace(/soeur/g, "sœur")
+    //apostrophe with curly
+    .replace(/'/g, "&rsquo;");
 
   return formattedWithHtml;
 };
 
 submitButton.addEventListener("click", () => {
-  formatWithHTMLfunction();
+  language = document.querySelector("#documentLanguage").value;
+  if (language === "en") {
+    formatWithHTMLfunctionEN();
+  } else formatWithHTMLfunctionFR();
   outputHTML.innerHTML = formattedWithHtml;
-  var lis = document.querySelectorAll('li')
-  var groups = Array.from(lis).reduce((groups, li, index, arr) => {
-    if (index === 0 || li.previousElementSibling !== arr[index-1]) {
-      groups.push([])
-    }
-    groups[groups.length-1].push(li)
-    return groups
-  }, [])
-  groups.forEach(lis => {
-    var ul = document.createElement('ul')
-    output.insertBefore(ul, lis[0])
-    lis.forEach(li => ul.appendChild(li))
-  })
   console.log(formattedWithHtml);
 });
 
 resetButton.addEventListener("click", () => {
-  formatWithHTMLfunction();
+  language = document.querySelector("#documentLanguage").value;
+  if (language === "en") {
+    formatWithHTMLfunctionEN();
+  } else formatWithHTMLfunctionFR();
   outputHTML.innerHTML = "";
   textToConvert.innerHTML = "";
   console.clear();
