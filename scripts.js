@@ -39,11 +39,11 @@ const formatWithHTMLfunctionEN = () => {
     //custom list of words to format
     .replace(
       /Professionally Speaking/g,
-      "<a href='http:professionallyspeaking.oct.ca'><cite>Professionally Speaking</cite></a>"
+      '<a href="http:professionallyspeaking.oct.ca"><cite>Professionally Speaking</cite></a>'
     )
     .replace(
       /Pour parler profession/g,
-      "<a href='http:pourparlerprofession.oeeo.ca'><cite>Pour parler profession</cite></a>"
+      '<a href="http:pourparlerprofession.oeeo.ca"><cite>Pour parler profession</cite></a>'
     );
 
   return formattedWithHtml;
@@ -81,26 +81,37 @@ const formatWithHTMLfunctionFR = () => {
     //custom list of words to format
     .replace(
       /Professionally Speaking/g,
-      "<a href='http:professionallyspeaking.oct.ca'><cite>Professionally Speaking</cite></a>"
+      '<a href="http:professionallyspeaking.oct.ca"><cite>Professionally Speaking</cite></a>'
     )
     .replace(
       /Pour parler profession/g,
-      "<a href='http:pourparlerprofession.oeeo.ca'><cite>Pour parler profession</cite></a>"
+      '<a href="http:pourparlerprofession.oeeo.ca"><cite>Pour parler profession</cite></a>'
     )
 
     //french replacements
     //mme
     .replace(/Mme /g, "M<sup>me</sup>&nbsp;")
+    //mme w/sup
+    .replace(/M\<sup\>me\<\/sup> /g, "M<sup>me</sup>&nbsp;")
+    //m.
+    .replace(/M\. /g, "M.&nbsp;")
+    //numbers
+    .replace(
+      /([0-9]|[0-9][0-9]|[0-9][0-9][0-9]) ([0-9][0-9][0-9])/g,
+      "$1&nbsp;$2"
+    )
+    //after colon
+    .replace(/( \: )/g, "&nbsp;:&nbsp;")
     //dre
     .replace(/Dre /g, "D<sup>re</sup>&nbsp;")
     //superscript numbers
     .replace(/(\d)(e)/g, "$1&nbsp<sup>e</sup>")
     //oeuvres
-    .replace(/oeuvre/g, "œuvre")
+    .replace(/oeuvre/g, "&‌OElig;uvre")
     //soeur
-    .replace(/soeur/g, "sœur")
+    .replace(/soeur/g, "s&‌OElig;ur")
     //apostrophe with curly
-    .replace(/'/g, "&rsquo;");
+    .replace(/[a-z]'[a-z]/g, "&rsquo;");
 
   return formattedWithHtml;
 };
@@ -122,4 +133,9 @@ resetButton.addEventListener("click", () => {
   outputHTML.innerHTML = "";
   textToConvert.innerHTML = "";
   console.clear();
+});
+
+copyHTML.addEventListener("click", () => {
+  document.querySelector("textarea").select();
+  document.execCommand("copy");
 });

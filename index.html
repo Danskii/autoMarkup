@@ -13,19 +13,22 @@
 </select>
 <br>
 -->
-<label for="documentLanguage">Select a document language:</label>
+<div id="textInputOptions">
+  <label for="documentLanguage">Select a document language:</label>
 
-<select id="documentLanguage">
-  <option value="en">English</option>
-  <option value="fr">French</option>
-</select>
-<br />
-<button type="submit" id="submitButton">Submit</button>
-<button type="reset" id="resetButton">Clear</button>
-<div id="outputs">
-  
-  <div id="output"></div>
+  <select id="documentLanguage">
+    <option value="en">English</option>
+    <option value="fr">French</option>
+  </select>
+
+  <button type="submit" id="submitButton">Convert to HTML</button>
+  <button id="copyHTML">Copy HTML</button>
+  <button type="reset" id="resetButton">Clear</button>
 </div>
+<div id="outputs">
+  <textarea id="output"></textarea>
+</div>
+
 <!-- Include the Quill library -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
@@ -34,9 +37,9 @@
   var toolbarOptions = [
     ["bold", "italic"],
     ["blockquote", "code-block"],
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    [{ 'list' : 'ordered' }, { 'list' : 'bullet' }],
-    [{ 'script' : 'super' }]
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ script: "super" }]
   ];
   var quill = new Quill("#editor", {
     modules: {
