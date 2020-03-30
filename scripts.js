@@ -19,6 +19,15 @@ const formatWithHTMLfunctionEN = () => {
     //replace double space after period
     .replace(/\.  /g, ".")
 
+    //remove <span> tag
+    .replace(/<span[^>]*>/g, "")
+
+    //remove </span> tag
+    .replace(/<\/span[^>]*>/g, "")
+
+    //remove style tags
+    .replace(/style=".*;"/g, "")
+
     //remove <p>&nbsp;</p>
     .replace(/<p>&nbsp;<\/p>/g, "")
 
@@ -38,12 +47,16 @@ const formatWithHTMLfunctionEN = () => {
 
     //custom list of words to format
     .replace(
-      /Professionally Speaking/g,
+      / Professionally Speaking /g,
       '<a href="http:professionallyspeaking.oct.ca"><cite>Professionally Speaking</cite></a>'
     )
     .replace(
-      /Pour parler profession/g,
+      / Pour parler profession /g,
       '<a href="http:pourparlerprofession.oeeo.ca"><cite>Pour parler profession</cite></a>'
+    )
+    .replace(
+      /Margaret Wilson Library/g,
+      '<a href="https://www.oct.ca/members/services/library">Margaret Wilson Library</a>'
     );
 
   return formattedWithHtml;
@@ -66,6 +79,15 @@ const formatWithHTMLfunctionFR = () => {
     //remove <p>&nbsp;</p>
     .replace(/<p>&nbsp;<\/p>/g, "")
 
+    //remove <span> tag
+    .replace(/<span[^>]*>/g, "")
+
+    //remove </span> tag
+    .replace(/<\/span[^>]*>/g, "")
+
+    //remove style tags
+    .replace(/style=".*;"/g, "")
+
     //remove <p><br></p>
     .replace(/<p><br><\/p>/g, "")
 
@@ -80,12 +102,16 @@ const formatWithHTMLfunctionFR = () => {
 
     //custom list of words to format
     .replace(
-      /Professionally Speaking/g,
+      / Professionally Speaking /g,
       '<a href="http:professionallyspeaking.oct.ca"><cite>Professionally Speaking</cite></a>'
     )
     .replace(
-      /Pour parler profession/g,
+      / Pour parler profession /g,
       '<a href="http:pourparlerprofession.oeeo.ca"><cite>Pour parler profession</cite></a>'
+    )
+    .replace(
+      /Margaret Wilson Library/g,
+      '<a href="https://www.oct.ca/members/services/library">Margaret Wilson Library</a>'
     )
 
     //french replacements
