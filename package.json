@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Danskii/auto-markup/issues"
   },
-  "homepage": "https://github.com/Danskii/auto-markup#readme"
+  "homepage": "https://github.com/Danskii/auto-markup#readme",
+  "dependencies": {
+    "ckeditor": "^4.12.1"
+  }
 }
