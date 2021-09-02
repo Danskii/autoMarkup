@@ -5,6 +5,8 @@ document.getElementById("submitButton").addEventListener("click", function() {
     let copyToClipboad = document.querySelector("#copyHTML");
     let input = CKEDITOR.instances.editor.getData();
     let output = document.querySelector("#output");
+
+
     output.innerText = input;
 
     //events for buttons
@@ -32,7 +34,6 @@ document.getElementById("submitButton").addEventListener("click", function() {
         output.innerText = "";
         output.innerText = clearBlanksAction;
     });
-
 
     //copy to clipboard
     copyToClipboad.addEventListener("click", function() {
